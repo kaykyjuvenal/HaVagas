@@ -247,11 +247,13 @@
             android:id="@+id/vagasInteresseTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:padding="20dp"
             android:text="Vagas de interese"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/formacaoSp"/>
+            app:layout_constraintTop_toBottomOf="@id/orientador"
+
+            />
         <EditText
             android:id="@+id/vagasInteresseEt"
             android:layout_width="match_parent"
@@ -268,12 +270,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar"
-            android:padding="5dp"
+            android:padding="20dp"
             android:layout_margin="5dp"
             android:onClick="save"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vagasInteresseEt" />
+            app:layout_constraintTop_toBottomOf="@id/vagasInteresseEt"/>
 
         <Button
             android:id="@+id/limparBt"

@@ -32,33 +32,16 @@ class MainActivity : AppCompatActivity() {
                 val formacao = (view as TextView).text.toString()
                 if (formacao == "fundamental" || formacao ==  "médio"){
                     amb.anoFormaturaEt.visibility = View.VISIBLE
-                }else{
-                    amb.anoFormaturaEt.visibility = View.GONE
-                    amb.anoFormaturaEt.setText("")
                 }
                 if (formacao == "especialização" || formacao == "graduação"){
                     amb.anoConclusaoEt.visibility = View.VISIBLE
                     amb.instituicaoEt.visibility = View.VISIBLE
-                }else{
-                    amb.anoConclusaoEt.visibility = View.GONE
-                    amb.instituicaoEt.visibility = View.GONE
-                    amb.anoConclusaoEt.setText("")
-                    amb.instituicaoEt.setText("")
                 }
                 if (formacao == "mestrado" || formacao == "doutorado"){
                     amb.anoConclusaoEt.visibility = View.VISIBLE
                     amb.instituicaoEt.visibility = View.VISIBLE
                     amb.tituloMonografiaEt.visibility = View.VISIBLE
                     amb.orientador.visibility = View.VISIBLE
-                }else{
-                    amb.anoConclusaoEt.visibility = View.GONE
-                    amb.instituicaoEt.visibility = View.GONE
-                    amb.tituloMonografiaEt.visibility = View.GONE
-                    amb.orientador.visibility = View.GONE
-                    amb.anoConclusaoEt.setText("")
-                    amb.instituicaoEt.setText("")
-                    amb.tituloMonografiaEt.setText("")
-                    amb.orientador.setText("")
                 }
 
 
@@ -91,6 +74,11 @@ class MainActivity : AppCompatActivity() {
             amb.dataNascEt.text.clear()
             amb.formacaoSp.setSelection(0)
             amb.vagasInteresseEt.text.clear()
+
+            amb.anoConclusaoEt.visibility = View.GONE
+            amb.instituicaoEt.visibility = View.GONE
+            amb.tituloMonografiaEt.visibility = View.GONE
+            amb.orientador.visibility = View.GONE
 
             Toast.makeText(this@MainActivity,"Limpado!",Toast.LENGTH_SHORT).show() }
     }
