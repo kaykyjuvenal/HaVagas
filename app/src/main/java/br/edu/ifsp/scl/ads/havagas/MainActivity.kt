@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.ads.havagas.databinding.ActivityMainBinding
+import br.edu.ifsp.scl.ads.havagas.Formulario
 
 class MainActivity : AppCompatActivity() {
     private val amb: ActivityMainBinding by lazy{
@@ -21,48 +22,76 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
 
-        """amb.estadoCivilSp.onItemSelectedListener = object: OnItemSelectedListener{
+        amb.formacaoSp.onItemSelectedListener = object: OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
-                val estadoCivil = (view as TextView).text.toString()
-                if (estadoCivil == "Casado"){
-                    amb.conjugeLl.visibility = View.VISIBLE
+                val formacao = (view as TextView).text.toString()
+                if (formacao == "fundamental" || formacao ==  "médio"){
+                    amb.anoFormaturaEt.visibility = View.VISIBLE
+                }else{
+                    amb.anoFormaturaEt.visibility = View.GONE
+                    amb.anoFormaturaEt.setText("")
                 }
-                else {
-                    amb.conjugeLl.visibility = View.GONE
-                    amb.nomeConjugeEt.setText("")
-                    amb.sobrenomeEt.setText("")
+                if (formacao == "especialização" || formacao == "graduação"){
+                    amb.anoConclusaoEt.visibility = View.VISIBLE
+                    amb.instituicaoEt.visibility = View.VISIBLE
+                }else{
+                    amb.anoConclusaoEt.visibility = View.GONE
+                    amb.instituicaoEt.visibility = View.GONE
+                    amb.anoConclusaoEt.setText("")
+                    amb.instituicaoEt.setText("")
                 }
+                if (formacao == "mestrado" || formacao == "doutorado"){
+                    amb.anoConclusaoEt.visibility = View.VISIBLE
+                    amb.instituicaoEt.visibility = View.VISIBLE
+                    amb.tituloMonografiaEt.visibility = View.VISIBLE
+                    amb.orientador.visibility = View.VISIBLE
+                }else{
+                    amb.anoConclusaoEt.visibility = View.GONE
+                    amb.instituicaoEt.visibility = View.GONE
+                    amb.tituloMonografiaEt.visibility = View.GONE
+                    amb.orientador.visibility = View.GONE
+                    amb.anoConclusaoEt.setText("")
+                    amb.instituicaoEt.setText("")
+                    amb.tituloMonografiaEt.setText("")
+                    amb.orientador.setText("")
+                }
+
+
                 // iMPLEMENTAR O LIMPAR
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 //NSA
+                }
             }
-
-
-        }
         amb.salvarBt.setOnClickListener{
-            val formulario  = Formulario(amb.nomeEt.text.toString(),
-                amb.sobrenomeEt.text.toString(),
+            val formulario  = Formulario(
+                amb.nomeCompletoEt.text.toString(),
                 amb.emailEt.text.toString(),
-                amb.estadoCivilSp.selectedItem.toString(),
-                amb.sexoRg.checkedRadioButtonId.toString()
+                amb.telefoneEt.text.toString(),
+                amb.celularEt.text.toString(),
+                amb.sexoRg.checkedRadioButtonId.toString(),
+                amb.dataNascEt.text.toString(),
+                amb.formacaoSp.selectedItem.toString(),
+                amb.vagasInteresseEt.text.toString()
             )
             Toast.makeText(this@MainActivity,formulario.toString(),Toast.LENGTH_SHORT).show()
         }
         amb.limparBt.setOnClickListener{
-            amb.nomeEt.text.clear()
-            amb.sobrenomeEt.text.clear()
+            amb.nomeCompletoEt.text.clear()
             amb.emailEt.text.clear()
-            amb.estadoCivilSp.setSelection(0)
+            amb.telefoneEt.text.clear()
+            amb.celularEt.text.clear()
             amb.sexoRg.clearCheck()
-            Toast.makeText(this@MainActivity,"Limpado!",Toast.LENGTH_SHORT).show()
-        }
-"""
+            amb.dataNascEt.text.clear()
+            amb.formacaoSp.setSelection(0)
+            amb.vagasInteresseEt.text.clear()
+
+            Toast.makeText(this@MainActivity,"Limpado!",Toast.LENGTH_SHORT).show() }
     }
 }
