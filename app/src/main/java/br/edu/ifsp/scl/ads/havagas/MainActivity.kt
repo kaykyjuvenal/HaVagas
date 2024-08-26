@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
-                // iMPLEMENTAR O LIMPAR
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
